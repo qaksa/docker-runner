@@ -2,7 +2,6 @@ version: "3"
 services:
   hub:
     image: selenium/hub:3.14
-    ports:
   chrome:
     image: selenium/node-chrome:3.141.59
     depends_on:
