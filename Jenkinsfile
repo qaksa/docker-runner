@@ -1,12 +1,17 @@
 pipeline{
 	agent any
 	stages{
-		stage("Starting the Executions"){
+		stage("Starting the Grid Infrastructure"){
 			steps{
-				sh "docker-compose up"
+				sh "docker-compose up -d hub chrome firefox"
 			}
 		}
-		stage("Bringing down the Grid Environment")
+		stage("Executing TestCases"){
+			steps{
+				sh "docker-compose up telecom"
+			}
+		}
+		stage("Bringing down the Infrastructure")
 		{
 			steps{
 				sh "docker-compose down"
